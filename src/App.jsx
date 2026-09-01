@@ -12,8 +12,8 @@ function App() {
         "https://api.themoviedb.org/3/discover/movie?api_key=62df2cd3a4881de6558bc68cd67cca20",
       );
       const data = await response.json();
-      console.log(data);
-      setMovies(data.results);
+      console.log("data", data);
+      return data;
     } catch (error) {
       console.error("Failed to fetch movies... :(", error);
     } finally {
@@ -23,19 +23,26 @@ function App() {
 
   // fetching movies and setting initial state
   useEffect(() => {
-    fetchMovies();
+    fetchMovies().then((data) => {
+      setMovies(data.results);
+    });
   }, []);
 
   return (
     <>
-      <h1>Check out these cool movies!</h1>
-      {movies.map((movie) => (
-        <MovieCard
-          title={movie.title}
-          poster_img={movie.poster_path}
-          year={movie.release_date}
-        ></MovieCard>
-      ))}
+      <h1>Find Your Next Movie Pick!</h1>
+      <div></div>
+      <div className="movie-grid">
+        {movies.map((movie, index) => (
+          <MovieCard
+            key={index}
+            title={movie.title}
+            poster_img={movie.poster_path}
+            year={movie.release_date}
+            overview={movie.overview}
+          ></MovieCard>
+        ))}
+      </div>
     </>
   );
 }
