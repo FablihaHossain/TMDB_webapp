@@ -119,3 +119,54 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+.filter-bar{
+  max-width: 1180px;
+  margin: 0 auto 40px;
+  padding: 0 32px;
+}
+
+.genre-select{
+  font-family: 'Inter', sans-serif;
+  font-size: .85rem;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 34px 9px 14px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%238b92a0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.genre-select:hover{
+  border-color: rgba(237,234,227,0.25);
+}
+
+.genre-select:focus{
+  outline: none;
+  border-color: var(--accent);
+}
+
+.empty-state{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 80px 32px;
+  text-align: center;
+}
+
+.empty-title{
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
+.empty-desc{
+  font-size: .88rem;
+  color: var(--muted);
+  margin: 0;
+}

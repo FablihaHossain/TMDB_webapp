@@ -11,10 +11,9 @@ function App() {
   const fetchMovies = async () => {
     try {
       const response = await fetch(
-        "https://api.themoviedb.org/3/discover/movie?api_key=62df2cd3a4881de6558bc68cd67cca20",
+        `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}`,
       );
       const data = await response.json();
-      console.log("data", data);
       return data;
     } catch (error) {
       console.error("Failed to fetch movies... :(", error);
@@ -26,7 +25,7 @@ function App() {
   const fetchGenres = async () => {
     try {
       const response = await fetch(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=62df2cd3a4881de6558bc68cd67cca20",
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_API_KEY}`,
       );
       const data = await response.json();
       return data;
@@ -35,7 +34,7 @@ function App() {
     }
   };
 
-  // fetching movies and setting initial state
+  // fetching movies and genres. Plus setting initial state
   useEffect(() => {
     fetchMovies().then((m_data) => {
       setMovies(m_data.results);
@@ -47,6 +46,7 @@ function App() {
     });
   }, []);
 
+  // filtering based on genre
   const selectedMovies = useMemo(() => {
     return genreId === "all movies"
       ? movies
@@ -57,8 +57,11 @@ function App() {
     <>
       <h1>Find Your Next Movie Pick!</h1>
 
-      <section>
-        <select onChange={(e) => setGenreId(e.target.value)}>
+      <div className="filter-bar">
+        <select
+          onChange={(e) => setGenreId(e.target.value)}
+          className="genre-select"
+        >
           <option value="all movies">All Genres</option>
           {genres.map((genre) => (
             <option key={genre.id} value={genre.id}>
@@ -66,18 +69,29 @@ function App() {
             </option>
           ))}
         </select>
-      </section>
-      <div className="movie-grid">
-        {selectedMovies.map((movie, index) => (
-          <MovieCard
-            key={index}
-            title={movie.title}
-            poster_img={movie.poster_path}
-            year={movie.release_date}
-            overview={movie.overview}
-          ></MovieCard>
-        ))}
       </div>
+
+      {selectedMovies.length === 0 ? (
+        <div className="empty-state">
+          <p className="empty_title">No movies found :(</p>
+          <p className="empty-desc">
+            Unfortunately we don't have recent movies in that genre. Please try
+            another one
+          </p>
+        </div>
+      ) : (
+        <div className="movie-grid">
+          {selectedMovies.map((movie, index) => (
+            <MovieCard
+              key={index}
+              title={movie.title}
+              poster_img={movie.poster_path}
+              year={movie.release_date}
+              overview={movie.overview}
+            ></MovieCard>
+          ))}
+        </div>
+      )}
     </>
   );
 }
