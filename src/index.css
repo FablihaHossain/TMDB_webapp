@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'SyneMono-Regular';
+  src: url('/fonts/SyneMono-Regular.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
@@ -13,7 +21,7 @@
 
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: 'SyneMono-Regular', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
