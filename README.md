@@ -1,6 +1,7 @@
 # React + Vite
 
-This web application fetches movies from the first page of The Movie Database (TMDB) and displays them in a styled grid of cards. There is a filter option to find movies by genre, and you can find more information on the title and release date by hovering your mouse over the code.
+This web application fetches movies from the first page of The Movie Database (TMDB) and displays them in a styled grid of cards, default sorted to newest first.
+There is a filter option to find movies by genre, and you can find more information on the title and release date by hovering your mouse over the code.
 
 To run the application, follow the steps below:
 
