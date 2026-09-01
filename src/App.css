@@ -7,11 +7,13 @@
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 22px;
+  width: 100%;
   max-width: 1180px;
   margin: 0 auto;
   padding: 0 32px;
+  box-sizing: border-box;
 }
 
 @media (max-width: 520px){
@@ -126,7 +128,7 @@
   padding: 0 32px;
 }
 
-.genre-select{
+.filter-select{
   font-family: 'Inter', sans-serif;
   font-size: .85rem;
   color: var(--text);
@@ -139,13 +141,14 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%238b92a0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
+  margin-right: 20px;
 }
 
-.genre-select:hover{
+.filter-select:hover{
   border-color: rgba(237,234,227,0.25);
 }
 
-.genre-select:focus{
+.filter-select:focus{
   outline: none;
   border-color: var(--accent);
 }
