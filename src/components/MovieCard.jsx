@@ -1,13 +1,18 @@
 const MovieCard = ({ title, poster_img, year }) => {
   return (
-    <div>
-      <p>{title}</p>
-      <img
-        src={`https://image.tmdb.org/t/p/w500/${poster_img}`}
-        height={100}
-        width={100}
-      ></img>
-      <p>{year}</p>
+    <div className="movie_card">
+      <div className="poster">
+        <img
+          src={`https://image.tmdb.org/t/p/w342/${poster_img}`}
+          alt={title}
+        ></img>
+      </div>
+
+      <div className="overlay">
+        <div className="rule-top"></div>
+        <p className="title">{title}</p>
+        <span className="year">{year}</span>
+      </div>
     </div>
   );
 };
